@@ -20,7 +20,7 @@ def index():
 @app.route('/submit',methods=["POST"])
 def submit():
 
-    data = request.json
+    data = request.get_json()
     name = data.get('name')
     email = data.get('email')
     message = data.get('message')
