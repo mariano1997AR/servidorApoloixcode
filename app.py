@@ -26,17 +26,17 @@ def submit():
     message = data.get('message')
 
     #instanciar la conexion de base de datos
-    db1 = DB("localhost","root","","clientesargentina")
+    #db1 = DB("localhost","root","","clientesargentina")
 
     #conectar 
-    conn = db1.conectorDB()
+    #conn = db1.conectorDB()
 
     #verificar si el email y nombre existe
  
     #insertar datos
     #db1.modificarTablaCliente(conn)
   
-    db1.insertarRegistroDB(conn,name,email)
+    #db1.insertarRegistroDB(conn,name,email)
 
     #Aca puedo procesar los datos y guardarlos en la base de datos
     print(f"Nombre: {name}, Email: {email}, Message: {message}")
