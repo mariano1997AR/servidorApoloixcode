@@ -20,11 +20,6 @@ def index():
 @app.route('/submit',methods=["POST"])
 def submit():
 
-    data = request.get_json()
-    name = data.get('name')
-    email = data.get('email')
-    message = data.get('message')
-
     #instanciar la conexion de base de datos
     #db1 = DB("localhost","root","","clientesargentina")
 
@@ -46,10 +41,13 @@ def submit():
     try:
         # Intentando obtener los datos del formulario
         data = request.get_json()  # Si estás esperando datos en formato JSON
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
         # data = request.form  # Si los datos están en formato form-data (por ejemplo, un formulario HTML tradicional)
         
         # Aquí puedes hacer algo con los datos (guardar en base de datos, procesarlos, etc.)
-        print(data)  # Solo para depurar, puedes eliminarlo después
+        print(f"Nombre: {name}, Email: {email}, Message: {message}")  # Solo para depurar, puedes eliminarlo después
 
         return jsonify({"message": "Datos recibidos correctamente"}), 200
 
