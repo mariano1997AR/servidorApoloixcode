@@ -51,6 +51,13 @@ def options():
     response.status_code = 200
     return response
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')  # o 'http://localhost:5173'
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    return response
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT',5000))
     app.run(host="0.0.0.0", port=port)
