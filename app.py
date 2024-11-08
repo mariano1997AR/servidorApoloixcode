@@ -17,7 +17,7 @@ def index():
 
 
 
-@app.route('/enviarDatosClientesApolo',methods=["POST"])
+@app.route('/submit',methods=["POST"])
 def submit():
 
     data = request.json
