@@ -7,7 +7,7 @@ import os
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app , resources={r"/*": {"origins": "http://localhost:5173"}})
 
 #array global para procesar los datos del  usuario
 personas = []
@@ -44,7 +44,12 @@ def submit():
     #enviar una respuesta al cliente
     return jsonify({"status":"sucess","message":"Datos recibidos correctamente"})
 
-
+# Manejar las solicitudes OPTIONS explícitamente
+@app.route('/submit', methods=['OPTIONS'])
+def options():
+    response = jsonify()
+    response.status_code = 200
+    return response
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT',5000))
