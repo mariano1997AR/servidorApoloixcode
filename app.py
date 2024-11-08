@@ -40,7 +40,7 @@ def submit():
     #return jsonify({"status":"sucess","message":"Datos recibidos correctamente"})
     try:
         # Intentando obtener los datos del formulario
-        data = request.get_json()  # Si estás esperando datos en formato JSON
+        data = request.json  # Si estás esperando datos en formato JSON
         name = data.get('name')
         email = data.get('email')
         message = data.get('message')
