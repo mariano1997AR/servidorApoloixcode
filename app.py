@@ -39,7 +39,7 @@ def submit():
     db1.insertarRegistroDB(conn,name,email)
 
     #Aca puedo procesar los datos y guardarlos en la base de datos
-    #print(f"Nombre: {name}, Email: {email}, Message: {message}")
+    print(f"Nombre: {name}, Email: {email}, Message: {message}")
 
     #enviar una respuesta al cliente
     return jsonify({"status":"sucess","message":"Datos recibidos correctamente"})
