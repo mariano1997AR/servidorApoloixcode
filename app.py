@@ -1,6 +1,7 @@
 from flask import Flask, request,jsonify
 from flask_cors import CORS
 from db.Conectar import DB
+import os
 
 
 
@@ -10,6 +11,10 @@ CORS(app)
 
 #array global para procesar los datos del  usuario
 personas = []
+@app.route('/')
+def index():
+    return 'hola mundo'
+
 
 
 @app.route('/enviarDatosClientesApolo',methods=["POST"])
@@ -42,5 +47,7 @@ def submit():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT',5000))
+    app.run(debug=False, host="0.0.0.0", port=port)
+
 
