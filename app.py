@@ -39,10 +39,23 @@ def submit():
     #db1.insertarRegistroDB(conn,name,email)
 
     #Aca puedo procesar los datos y guardarlos en la base de datos
-    print(f"Nombre: {name}, Email: {email}, Message: {message}")
+    #print(f"Nombre: {name}, Email: {email}, Message: {message}")
 
     #enviar una respuesta al cliente
-    return jsonify({"status":"sucess","message":"Datos recibidos correctamente"})
+    #return jsonify({"status":"sucess","message":"Datos recibidos correctamente"})
+    try:
+        # Intentando obtener los datos del formulario
+        data = request.get_json()  # Si estás esperando datos en formato JSON
+        # data = request.form  # Si los datos están en formato form-data (por ejemplo, un formulario HTML tradicional)
+        
+        # Aquí puedes hacer algo con los datos (guardar en base de datos, procesarlos, etc.)
+        print(data)  # Solo para depurar, puedes eliminarlo después
+
+        return jsonify({"message": "Datos recibidos correctamente"}), 200
+
+    except Exception as e:
+        # Si ocurre un error, lo capturamos y lo mostramos
+        return jsonify({"error": str(e)}), 500
 
 # Manejar las solicitudes OPTIONS explícitamente
 @app.route('/submit', methods=['OPTIONS'])
