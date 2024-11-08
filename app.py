@@ -7,7 +7,7 @@ import os
 
 
 app = Flask(__name__)
-CORS(app , resources={r"/*": {"origins": "http://localhost:5173"}})
+CORS(app , resources={r"/*": {"origins": "*"}})
 
 #array global para procesar los datos del  usuario
 personas = []
@@ -60,6 +60,6 @@ def after_request(response):
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT',5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True,host="0.0.0.0", port=port)
 
 
